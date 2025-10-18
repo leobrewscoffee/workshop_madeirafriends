@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Secret to the Perfect Cup | Coffee Brewing Workshop</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+line-height: 1.6;
+color: #2c2c2c;
+background: linear-gradient(135deg, #1a1a1a 0%, #3d2817 100%);
+overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 2rem;
+position: relative;
+background: radial-gradient(circle at 30% 50%, rgba(139, 69, 19, 0.3), transparent 50%),
+radial-gradient(circle at 70% 50%, rgba(101, 67, 33, 0.3), transparent 50%);
+}
+
+.hero::before {
+content: '☕';
+position: absolute;
+font-size: 20rem;
+opacity: 0.05;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
+}
+
+.hero-content {
+position: relative;
+z-index: 1;
+max-width: 900px;
+animation: fadeInUp 1s ease-out;
+}
+
+.hero h1 {
+font-size: clamp(2.5rem, 8vw, 5rem);
+color: #f4e4c1;
+margin-bottom: 1.5rem;
+font-weight: 700;
+text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+letter-spacing: -1px;
+}
+
+.hero-subtitle {
+font-size: clamp(1.2rem, 3vw, 1.8rem);
+color: #d4a574;
+margin-bottom: 3rem;
+font-weight: 300;
+}
+
+.cta-button {
+display: inline-block;
+padding: 1.2rem 3rem;
+background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+color: white;
+text-decoration: none;
+border-radius: 50px;
+font-size: 1.2rem;
+font-weight: 600;
+transition: all 0.3s ease;
+box-shadow: 0 10px 30px rgba(139, 69, 19, 0.4);
+}
+
+.cta-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 40px rgba(139, 69, 19, 0.6);
+background: linear-gradient(135deg, #A0522D 0%, #8B4513 100%);
+}
+
+/* Content Sections */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 4rem 2rem;
+}
+
+.section {
+background: white;
+border-radius: 20px;
+padding: 3rem;
+margin-bottom: 3rem;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+animation: fadeIn 0.8s ease-out;
+position: relative;
+overflow: hidden;
+}
+
+.section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 5px;
+background: linear-gradient(90deg, #8B4513, #D2691E, #8B4513);
+}
+
+.section h2 {
+font-size: 2.5rem;
+color: #3d2817;
+margin-bottom: 1.5rem;
+font-weight: 700;
+}
+
+.section h3 {
+font-size: 1.8rem;
+color: #654321;
+margin: 2rem 0 1rem;
+font-weight: 600;
+}
+
+.section p {
+margin-bottom: 1.5rem;
+font-size: 1.1rem;
+color: #444;
+}
+
+/* Tool List */
+.tools-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1.5rem;
+margin-top: 2rem;
+}
+
+.tool-card {
+background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+padding: 1.5rem;
+border-radius: 15px;
+border-left: 4px solid #8B4513;
+transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+transform: translateX(10px);
+box-shadow: 0 5px 20px rgba(139, 69, 19, 0.2);
+}
+
+.tool-card strong {
+color: #654321;
+font-size: 1.1rem;
+}
+
+/* Method Cards */
+.methods-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+margin-top: 2rem;
+}
+
+.method-card {
+background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+padding: 2rem;
+border-radius: 15px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease;
+}
+
+.method-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.method-card h3 {
+margin-top: 0;
+color: #3d2817;
+}
+
+/* Tables */
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 1.5rem 0;
+background: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+padding: 1rem;
+text-align: left;
+border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+background: linear-gradient(135deg, #654321 0%, #8B4513 100%);
+color: white;
+font-weight: 600;
+}
+
+tr:hover {
+background: #f9f9f9;
+}
+
+/* Products Section */
+.products-section {
+background: linear-gradient(135deg, #fff8e1 0%, #ffe9b8 100%);
+position: relative;
+}
+
+.products-section h2 {
+text-align: center;
+font-size: 3rem;
+color: #3d2817;
+}
+
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+margin-top: 2rem;
+}
+
+.product-card {
+display: block;
+background: white;
+border-radius: 15px;
+text-decoration: none;
+overflow: hidden;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 12px 30px rgba(139, 69, 19, 0.3);
+}
+
+.product-image {
+width: 100%;
+height: 250px;
+object-fit: contain;
+background: #fafafa;
+padding: 1.5rem;
+}
+
+.product-info {
+padding: 1.5rem;
+background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+color: white;
+text-align: center;
+font-weight: 600;
+font-size: 1.05rem;
+}
+
+.product-link {
+display: block;
+background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+color: white;
+text-align: center;
+padding: 1.5rem;
+border-radius: 12px;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.05rem;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+
+.product-link:hover {
+transform: scale(1.05);
+box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+background: linear-gradient(135deg, #A0522D 0%, #8B4513 100%);
+}
+
+.wishlist-link {
+background: linear-gradient(135deg, #3d2817 0%, #5a3d2a 100%);
+margin-top: 2rem;
+font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+background: #2c2c2c;
+color: #999;
+padding: 2rem;
+text-align: center;
+font-size: 0.9rem;
+line-height: 1.8;
+}
+
+footer a {
+color: #d4a574;
+text-decoration: none;
+}
+
+footer a:hover {
+text-decoration: underline;
+}
+
+/* Instagram CTA */
+.instagram-section {
+background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
+padding: 3rem 2rem;
+text-align: center;
+margin-top: 3rem;
+}
+
+.instagram-content {
+max-width: 600px;
+margin: 0 auto;
+}
+
+.instagram-content h3 {
+color: white;
+font-size: 2rem;
+margin-bottom: 1rem;
+text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-content p {
+color: white;
+font-size: 1.2rem;
+margin-bottom: 2rem;
+}
+
+.instagram-button {
+display: inline-block;
+padding: 1.2rem 3rem;
+background: white;
+color: #833AB4;
+text-decoration: none;
+border-radius: 50px;
+font-size: 1.2rem;
+font-weight: 700;
+transition: all 0.3s ease;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-button:hover {
+transform: translateY(-3px) scale(1.05);
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+background: #f9f9f9;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.section {
+padding: 2rem 1.5rem;
+}
+.container {
+padding: 2rem 1rem;
+}
+.tools-grid,
+.methods-grid,
+.products-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+<h1>The Secret to the Perfect Cup</h1>
+<p class="hero-subtitle">Master the Art of Home Coffee Brewing by @LeoBrewsCoffee</p>
+<a href="#specialty" class="cta-button">Discover Your Brew</a>
+</div>
+</section>
+
+<!-- Main Content -->
+<div class="container">
+
+<!-- Specialty Coffee -->
+<section id="specialty" class="section">
+<h2>Why Specialty Coffee?</h2>
+<p>When we talk about <strong>specialty coffee</strong>, we're speaking of a commitment to excellence at every stage—from seed to cup—ensuring the coffee's unique flavors truly shine.</p>
+<p>This involves meticulous care throughout the entire journey:</p>
+<ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+<li><strong>From the farm:</strong> Careful selection of varieties, sustainable agricultural practices, and precise processing methods.</li>
+<li><strong>To the roaster:</strong> Expert roasting that highlights the inherent characteristics of the bean.</li>
+<li><strong>To your cup:</strong> Water quality and brewing method play crucial roles.</li>
+</ul>
+<p>A key differentiator for specialty coffee is its scoring. Coffees are professionally 'cupped' and graded. Anything scoring <strong>80 points or above on a 100-point scale</strong> by certified Q Graders is considered specialty coffee. The difference between high-quality specialty beans and lower-grade commercial beans is remarkable—you can see it, smell it, and taste it!</p>
+</section>
+
+<!-- Brewing Methods -->
+<section class="section">
+<h2>Essential Brewing Tools</h2>
+<p>Today we explore the most common and accessible brewing methods that allow you to enjoy delicious specialty coffee right in your own kitchen. Each step in the brewing process significantly impacts your final cup.</p>
+<div class="tools-grid">
+<div class="tool-card">
+<strong>V60 Dripper</strong><br>
+A classic for a clean, nuanced cup with paper filters
+</div>
+<div class="tool-card">
+<strong>Moka Pot</strong><br>
+Rich, strong coffee often compared to espresso
+</div>
+<div class="tool-card">
+<strong>French Press</strong><br>
+Full-bodied, immersive brewing experience
+</div>
+<div class="tool-card">
+<strong>Digital Scale</strong><br>
+Crucial for consistent and accurate measurements
+</div>
+<div class="tool-card">
+<strong>Coffee Grinder</strong><br>
+Freshly ground coffee makes an immense difference
+</div>
+<div class="tool-card">
+<strong>Filtered Water</strong><br>
+Coffee is 98% water—good water equals good coffee
+</div>
+</div>
+</section>
+
+<!-- Methods Grid -->
+<section class="section">
+<h2>Brewing Methods Deep Dive</h2>
+<div class="methods-grid">
+<!-- Moka Pot -->
+<div class="method-card">
+<h3>☕ Moka Pot</h3>
+<p>Strong, concentrated brew with full-bodied flavor and bold profile.</p>
+<p><strong>Key Steps:</strong> Pre-heat water, use medium-fine grind, fill basket gently (never tamp!), use low heat, and remove from heat as soon as coffee gushes.</p>
+<table>
+<tr><th>Parameter</th><th>Detail</th></tr>
+<tr><td>Ratio</td><td>~1:7 (concentrated)</td></tr>
+<tr><td>Grind</td><td>Medium-fine</td></tr>
+<tr><td>Time</td><td>3-5 minutes</td></tr>
+</table>
+</div>
+
+<!-- French Press -->
+<div class="method-card">
+<h3>☕ French Press</h3>
+<p>Fast, simple method yielding a wonderfully full-bodied and immersive cup.</p>
+<p><strong>Key Steps:</strong> Use medium-coarse grind, steep for 3-5 minutes, push plunger down slowly, always decant immediately to prevent over-extraction.</p>
+<table>
+<tr><th>Parameter</th><th>Detail</th></tr>
+<tr><td>Ratio</td><td>1:15</td></tr>
+<tr><td>Grind</td><td>Medium-coarse</td></tr>
+<tr><td>Time</td><td>3-4 minutes</td></tr>
+</table>
+</div>
+
+<!-- V60 -->
+<div class="method-card">
+<h3>☕ V60 Pour-Over</h3>
+<p>The most versatile method allowing subtle flavors and delicate aromas to shine.</p>
+<p><strong>Key Steps:</strong> Heat water to 90-96°C, rinse paper filter, use three-pour technique (Bloom, Second, Third) to control extraction.</p>
+<table>
+<tr><th>Parameter</th><th>Detail</th></tr>
+<tr><td>Ratio</td><td>1:15</td></tr>
+<tr><td>Grind</td><td>Medium</td></tr>
+<tr><td>Time</td><td>3-5 minutes</td></tr>
+</table>
+</div>
+</div>
+</section>
+
+<!-- Cheat Sheet -->
+<section class="section">
+<h2>Quick Reference Cheat Sheet</h2>
+<p>Your go-to guide for all the brewing recipes and parameters we discussed today:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Ratio (Coffee:Water)</th>
+<th>Grind Size</th>
+<th>Brew Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Moka Pot</strong></td>
+<td>~1:7 (Concentrated)</td>
+<td>Medium-fine</td>
+<td>3-5 minutes</td>
+</tr>
+<tr>
+<td><strong>French Press</strong></td>
+<td>1:15</td>
+<td>Medium-coarse</td>
+<td>3-4 minutes</td>
+</tr>
+<tr>
+<td><strong>V60</strong></td>
+<td>1:15</td>
+<td>Medium</td>
+<td>3-5 minutes</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- Products Section -->
+<section class="section products-section">
+<h2>☕ LeoBrewsCoffee Recommends ☕</h2>
+<p style="text-align: center; font-size: 1.15rem;">Thinking of upgrading your home brewing equipment? Here's a curated list of my favorite products available on Amazon. These affiliate links support the workshop!</p>
+<h3>Top Recommended Products</h3>
+<div class="products-grid">
+<a href="https://amzn.to/47uvebn" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/61fHW0r8V0L._AC_SX679_.jpg" alt="Bialetti Moka Express" class="product-image">
+<div class="product-info">Bialetti Moka Express - Iconic Italian Espresso Maker 6 Cup</div>
+</a>
+<a href="https://amzn.to/4nbvq4c" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/61B+cUVvjjL._AC_SL1000_.jpg" alt="Hario Drip Coffee Maker" class="product-image">
+<div class="product-info">Hario Drip Coffee Maker</div>
+</a>
+<a href="https://amzn.to/3W8YbU7" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/61BE9lcCoeL._AC_SX679_.jpg" alt="V60 Dripper Set" class="product-image">
+<div class="product-info">V60 Coffee Dripper and Server Set 02 - Black</div>
+</a>
+<a href="https://amzn.to/3LhVTzu" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/71ZYIaqs-ML._SX522_.jpg" alt="TIMEMORE Scale" class="product-image">
+<div class="product-info">TIMEMORE Black Mirror Mini Espresso Scale</div>
+</a>
+<a href="https://amzn.to/4neGJsl" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/5185A2zQkIL._AC_SX679_.jpg" alt="TIMEMORE Electric Kettle" class="product-image">
+<div class="product-info">TIMEMORE Electric Gooseneck Kettle with Temperature Control</div>
+</a>
+<a href="https://amzn.to/3KS6xwZ" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/81uGMGzn9KL._AC_SL1500_.jpg" alt="TIMEMORE Grinder" class="product-image">
+<div class="product-info">TIMEMORE Chestnut C3 MAX PRO Manual Grinder</div>
+</a>
+<a href="https://amzn.to/3JavjrB" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/61gFbnUDs6L._AC_SX679_.jpg" alt="Gooseneck Kettle" class="product-image">
+<div class="product-info">1.2 L Gooseneck Kettle with Thermometer</div>
+</a>
+<a href="https://amzn.to/4qirYYc" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/71v6g1IOZTL._AC_SL1500_.jpg" alt="AeroPress Go" class="product-image">
+<div class="product-info">AeroPress Go - Travel Coffee Maker</div>
+</a>
+<a href="https://amzn.to/4ndsUdM" target="_blank" class="product-card">
+<img src="https://m.media-amazon.com/images/I/51fuJ1eYoCL._AC_SL1000_.jpg" alt="Ceramic Dosing Cup" class="product-image">
+<div class="product-info">Ceramic Coffee Bean Dosing Cup & Spray Bottle</div>
+</a>
+</div>
+<a href="https://www.amazon.es/hz/wishlist/ls/2P68VZJG5BW6Q?tag=leobrewscof0a-21" target="_blank" class="product-link wishlist-link">View Complete Amazon Wishlist →</a>
+</section>
+
+</div>
+
+<!-- Instagram Section -->
+<section class="instagram-section">
+<div class="instagram-content">
+<h3>☕ Join the Coffee Community</h3>
+<p>Get daily brewing tips, behind-the-scenes content, and exclusive coffee recipes!</p>
+<a href="https://www.instagram.com/leobrewscoffee/" target="_blank" class="instagram-button">
+📸 Follow @LeoBrewsCoffee on Instagram
+</a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<p><strong>Affiliate Disclosure:</strong> As an Amazon Associate, I earn from qualifying purchases. This means that if you click on one of the product links and make a purchase, I may receive a small commission at no extra cost to you. This helps support the workshop and allows me to continue providing quality coffee education. Thank you for your support!</p>
+</footer>
+
+</body>
+</html>
